@@ -1,57 +1,65 @@
-# React + TypeScript + Vite
+# 剑网三·练剑飞 (Jianfei Training)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一款基于《剑网三》纯阳门派“剑飞惊鸿”技能机制的 1v1 反应速度训练游戏。
 
-Currently, two official plugins are available:
+## 🎮 游戏简介
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**练剑飞** 旨在帮助玩家通过实战模拟，提升对读条机制的识别能力和反应速度。在游戏中，你将面对不断释放技能的对手，需要准确判断读条类型并果断出手打断，从而掌握 PVP 竞技中的核心技巧。
 
-## Expanding the ESLint configuration
+## ✨ 核心功能
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **双色读条系统**：
+  - 🟡 **黄色读条**：可使用“剑飞”技能打断，成功后可沉默对手 5 秒。
+  - 🔴 **红色读条**：不可打断技能，需通过防御技能降低受到的伤害。
+- **动态读条机制**：支持正向与逆向读条，增加判断难度。
+- **智能 AI 对手**：AI 具备“假读条”逻辑（骗剑飞），考验玩家的定力与观察力。
+- **战斗反馈**：实时的伤害跳字系统、打断成功/失败提示。
+- **数据统计**：游戏结束提供详细的数据统计，包括打断成功率、输出伤害与受到伤害。
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ 技术栈
+
+- **前端框架**：React 18 + TypeScript
+- **构建工具**：Vite
+- **状态管理**：Zustand
+- **动画库**：Framer Motion
+- **样式方案**：TailwindCSS
+- **图标库**：Lucide React
+
+## 🚀 快速开始
+
+### 开发环境运行
+
+1. 安装依赖：
+   ```bash
+   npm install
+   ```
+2. 启动开发服务器：
+   ```bash
+   npm run dev
+   ```
+
+### 生产环境构建
+
+构建生产版本：
+```bash
+npm run build
 ```
+构建后的文件将生成在 `dist` 目录中。
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 部署
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+本项目已适配静态页面部署。
 
-export default tseslint.config({
-  extends: [
-    // other configs...
-    // Enable lint rules for React
-    reactX.configs['recommended-typescript'],
-    // Enable lint rules for React DOM
-    reactDom.configs.recommended,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. 修改 `vite.config.ts` 中的 `base` 路径（如需部署到子目录）。
+2. 执行 `npm run build`。
+3. 将 `dist` 文件夹中的内容部署至静态资源服务器（如 Gitee Pages, GitHub Pages, Vercel 等）。
+
+## 📜 核心机制说明
+
+- **剑飞惊鸿**：核心打断技能。若在对手读条期间释放且技能可打断，则打断其施法并施加 5 秒沉默。
+- **公共冷却 (GCD)**：大部分技能共享 1.5 秒公共冷却时间，合理安排技能释放顺序至关重要。
+- **假读条 (Fake Cast)**：AI 有概率在读条中途主动打断自己，若此时玩家交出剑飞，则会被判定为“闪避”，浪费核心技能。
+
+---
+
+*由 Trae AI 协助开发。*
